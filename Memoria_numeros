@@ -1,0 +1,164 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+
+entity memoria_numeros is
+    Port ( Selector_letra: in STD_LOGIC_VECTOR (3 downto 0);
+		   Lectura: in std_logic;
+         Datos1 : out  STD_LOGIC_VECTOR (15 downto 0);
+		   Datos2 : out  STD_LOGIC_VECTOR (15 downto 0);
+		   Datos3 : out  STD_LOGIC_VECTOR (15 downto 0);
+		   Datos4 : out  STD_LOGIC_VECTOR (15 downto 0);
+		   Datos5 : out  STD_LOGIC_VECTOR (15 downto 0);
+		   Datos6 : out  STD_LOGIC_VECTOR (15 downto 0);
+		   Datos7 : out  STD_LOGIC_VECTOR (15 downto 0);
+		   Datos8 : out  STD_LOGIC_VECTOR (15 downto 0));
+end memoria_numeros;
+
+
+architecture Behavioral of memoria_numeros is
+begin
+
+process (Selector_letra)
+begin
+if Lectura='1' then
+if Selector_letra = "0000"  theN
+
+Datos1 <="0111111100000000"; --c1 
+Datos2 <="1011111100111100"; --c2 
+Datos3 <="1101111101100110"; --c3  
+Datos4 <="1110111111000011"; --c4 
+Datos5 <="1111011111000011"; --c5 
+Datos6 <="1111101101100110"; --c6 
+Datos7 <="1111110100111100"; --c7
+Datos8 <="1111111000000000"; --c8  
+
+
+elsif Selector_letra = "0001"  then
+
+
+Datos1 <="0111111100000000"; --c1 
+Datos2 <="1011111100011000"; --c2 
+Datos3 <="1101111101111000"; --c3  
+Datos4 <="1110111100011000"; --c4 
+Datos5 <="1111011100011000"; --c5 
+Datos6 <="1111101100011000"; --c6 
+Datos7 <="1111110101111110"; --c7
+Datos8 <="1111111000000000"; --c8  
+
+elsif Selector_letra = "0010"  then
+
+Datos1 <="0111111100000000"; --c1 
+Datos2 <="1011111100111100"; --c2 
+Datos3 <="1101111101100110"; --c3  
+Datos4 <="1110111100001100"; --c4 
+Datos5 <="1111011100011000"; --c5 
+Datos6 <="1111101100110000"; --c6 
+Datos7 <="1111110101111110"; --c7
+Datos8 <="1111111000000000"; --c8
+
+  
+elsif Selector_letra = "0011"  then
+
+Datos1 <="0111111100000000"; --c1 
+Datos2 <="1011111101111110"; --c2 
+Datos3 <="1101111100000110"; --c3  
+Datos4 <="1110111100011100"; --c4 
+Datos5 <="1111011100001110"; --c5 
+Datos6 <="1111101101000111"; --c6 
+Datos7 <="1111110100111110"; --c7
+Datos8 <="1111111000000000"; --c8  
+
+elsif Selector_letra = "0100"  then
+
+Datos1 <="0111111100000000"; --c1 
+Datos2 <="1011111100000110"; --c2 
+Datos3 <="1101111100001110"; --c3  
+Datos4 <="1110111100010110"; --c4 
+Datos5 <="1111011100100110"; --c5 
+Datos6 <="1111101101111111"; --c6 
+Datos7 <="1111110100000110"; --c7
+Datos8 <="1111111000000000"; --c8  
+  
+elsif Selector_letra = "0101"  then
+
+Datos1 <="0111111100000000"; --c1 
+Datos2 <="1011111101111110"; --c2 
+Datos3 <="1101111101100000"; --c3  
+Datos4 <="1110111101111100"; --c4 
+Datos5 <="1111011100000110"; --c5 
+Datos6 <="1111101100000110"; --c6 
+Datos7 <="1111110101111100"; --c7
+Datos8 <="1111111000000000"; --c8  
+
+elsif Selector_letra = "0110"  then
+
+Datos1 <="0111111100000000"; --c1 
+Datos2 <="1011111100000110"; --c2 
+Datos3 <="1101111100001100"; --c3  
+Datos4 <="1110111100111000"; --c4 
+Datos5 <="1111011101100110"; --c5 
+Datos6 <="1111101101100110"; --c6 
+Datos7 <="1111110100011100"; --c7
+Datos8 <="1111111000000000"; --c8  
+  
+elsif Selector_letra = "0111"  then
+
+Datos1 <="0111111100000000"; --c1 
+Datos2 <="1011111101111110"; --c2 
+Datos3 <="1101111100000110"; --c3  
+Datos4 <="1110111100001100"; --c4 
+Datos5 <="1111011100011000"; --c5 
+Datos6 <="1111101100110000"; --c6 
+Datos7 <="1111110101100000"; --c7
+Datos8 <="1111111000000000"; --c8  
+
+elsif Selector_letra = "1000"  then
+
+Datos1 <="0111111100000000"; --c1 
+Datos2 <="1011111100011000"; --c2 
+Datos3 <="1101111100100100"; --c3  
+Datos4 <="1110111100011000"; --c4 
+Datos5 <="1111011100111100"; --c5 
+Datos6 <="1111101101000010"; --c6 
+Datos7 <="1111110100111100"; --c7
+Datos8 <="1111111000000000"; --c8    
+  
+elsif Selector_letra = "1001"  then
+
+Datos1 <="0111111100000000"; --c1 
+Datos2 <="1011111100111000"; --c2 
+Datos3 <="1101111101100110"; --c3  
+Datos4 <="1110111101100110"; --c4 
+Datos5 <="1111011100011100"; --c5 
+Datos6 <="1111101100011000"; --c6 
+Datos7 <="1111110100110000"; --c7
+Datos8 <="1111111000000000"; --c8    
+  
+ 
+else
+Datos1 <="0000000000000000"; --c1 
+Datos2 <="0000000000000000"; --c2 
+Datos3 <="0000000000000000"; --c3  
+Datos4 <="0000000000000000"; --c4 
+Datos5 <="0000000000000000"; --c5 
+Datos6 <="0000000000000000"; --c6 
+Datos7 <="0000000000000000"; --c7
+Datos8 <="0000000000000000"; --c8  
+
+
+End if;
+else
+Datos1 <="0000000000000000"; --c1 
+Datos2 <="0000000000000000"; --c2 
+Datos3 <="0000000000000000"; --c3  
+Datos4 <="0000000000000000"; --c4 
+Datos5 <="0000000000000000"; --c5 
+Datos6 <="0000000000000000"; --c6 
+Datos7 <="0000000000000000"; --c7
+Datos8 <="0000000000000000"; --c8  
+end if;
+end process ;
+end Behavioral;
