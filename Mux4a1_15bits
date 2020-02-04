@@ -1,0 +1,31 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity mux4a1_15bits is
+
+port (
+      a : in std_logic_vector(15 downto 0);
+	  b : in std_logic_vector(15 downto 0);
+	  c : in std_logic_vector(15 downto 0);
+	  d : in std_logic_vector(15 downto 0);
+	  
+     seleccion : in std_logic_vector(4 downto 0);
+     salida : out std_logic_vector(15 downto 0)
+     );
+end mux4a1_15bits;
+
+architecture sol of mux4a1_15bits is
+begin
+
+process(a,b,c,d,seleccion)
+begin
+case seleccion is
+  when "00000" => salida <= a;
+  when "00001" => salida <= b;
+  when "00010" => salida <= c;
+  when "00011" => salida <= d;
+  
+  when others => salida <= "0000000000000000"; 
+end case; 
+end process;
+end sol;
