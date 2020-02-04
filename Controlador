@@ -1,0 +1,254 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity CONTROLADOR is
+   port( 
+			CLOCK: in std_logic;
+			Reset: in std_logic;
+			START: in std_logic;
+			JUGAR: in std_logic;
+			ABANDONAR: in std_logic;
+			PIEDRA: in std_logic;
+			PAPEL: in std_logic;
+			TIJERA: in std_logic;
+			DINAMITA: in std_logic;
+			Gu_piedra: in std_logic;
+			Gu_papel: in std_logic;
+			Gu_tijera: in std_logic;
+			Gu_Dinamita: in std_logic;
+			GM_piedra: in std_logic;
+			GM_papel: in std_logic;
+			GM_tijera: in std_logic;
+			GM_Dinamita: in std_logic;
+			Empate: in std_logic;
+			Tiempo: in std_logic;
+			mayorigual99: in std_logic;
+			
+			
+			
+			
+			
+			EN_ram_Usu: OUT std_logic;
+			ENA: OUT std_logic;
+			En_ram_Aleatorio: OUT std_logic;
+			SeleccionU: OUT std_logic_vector(2 downto 0);
+			EN_Comparacion: OUT std_logic;
+			T: OUT std_logic;
+			Sel1: OUT std_logic_vector(2 downto 0);
+			Sel2: OUT std_logic_vector(2 downto 0);
+			
+			EN_conteo: OUT std_logic;
+			En_acierto: OUT std_logic;
+			EN_AP: OUT std_logic;
+			EN_APA: OUT std_logic;
+			EN_AT: OUT std_logic;
+			EN_AD: OUT std_logic);
+			
+end CONTROLADOR;
+
+
+
+architecture COMPORTAMIENTO of controlador is
+	TYPE estado IS (Ta,Tb,Tc,Td,Te,Tf,Tg,Th,Ti,Tj,Tk,Tl,Tm,Tn,Tp,Tq,Tr,Ts,Tt,Tu,Tv,Tw,Tx,Ty,Tz,Ta1,Tb1,Tc1,Td1,Te1,Tf1,Tg1,Th1,Ti1,Tj1,Tk1,Tl1,Tm1,Tn1,Tp1,Tq1,Tr1,Ts1,Tt1,Tu1,Tv1,Tw1,Tx1,Ty1,Tz1);
+	SIGNAL y : estado;
+begin
+ PROCESS (Reset,CLOCK)
+ begin
+	if Reset='0' then y<=Ta;
+	elsif (CLOCK'event and Clock='1') then 
+		case y is
+			when Ta=> if (START='1') then y<=Tb; 
+						 else y<=Ta;
+						 end if; 
+			when Tb=> if (START='0') then y<=Tc; 
+						 else y<=Tb;
+						 end if;
+			when Tc=> if (JUGAR='1') then y<=Td; 
+						 else y<=Tc;
+						 end if;
+			when Td=> if (JUGAR='0') then y<=Te; 
+						 else y<=Td;
+						 end if;
+			when Te=> if   (ABANDONAR='1') then y<=Tb1;
+			         ELSIF ((ABANDONAR='0') and (DINAMITA='1') and (TIJERA='0') and (PAPEL='0') and (PIEDRA='0')) then y<=Ti;
+	               ELSIF ((ABANDONAR='0') and (DINAMITA='0') and (TIJERA='1') and (PAPEL='0') and (PIEDRA='0')) then y<=Th;
+					   ELSIF ((ABANDONAR='0') and (DINAMITA='0') and (TIJERA='0') and (PAPEL='1') and (PIEDRA='0')) then y<=Tg;
+					   ELSIF ((ABANDONAR='0') and (DINAMITA='0') and (TIJERA='0') and (PAPEL='0') and (PIEDRA='1')) then y<=Tf;
+					   else y<=te;
+						 end if;
+			when Tf=> if (PIEDRA='0') then y<=Tj; 
+						 else y<=Tf;
+						 end if;
+			when Tg=> if (PAPEL='0') then y<=Tk; 
+						 else y<=Tg;
+						 end if;
+			when Th=> if (TIJERA='0') then y<=Tl; 
+						 else y<=Th;
+						 end if;
+			when Ti=> if (DINAMITA='0') then y<=Tm; 
+						 else y<=Ti;
+						 end if;
+			when Tj=> y<= Tn;
+			when Tk=> y<= Tn;
+			when Tl=> y<= Tn;
+			when Tm=> y<= Tn;
+			when Tn=> y<= Tp;
+			when Tp=> if   ((Gu_piedra='1') and (Gu_papel='0') and (Gu_tijera='0') and (Gu_Dinamita='0') and (GM_piedra='0') and (GM_papel='0') and (GM_tijera='0') and (GM_Dinamita='0') and (Empate='0')) then y<=Tq;
+			         ELSIF ((Gu_piedra='0') and (Gu_papel='1') and (Gu_tijera='0') and (Gu_Dinamita='0') and (GM_piedra='0') and (GM_papel='0') and (GM_tijera='0') and (GM_Dinamita='0') and (Empate='0')) then y<=Tr;
+	               ELSIF ((Gu_piedra='0') and (Gu_papel='0') and (Gu_tijera='1') and (Gu_Dinamita='0') and (GM_piedra='0') and (GM_papel='0') and (GM_tijera='0') and (GM_Dinamita='0') and (Empate='0')) then y<=Ts;
+					   ELSIF ((Gu_piedra='0') and (Gu_papel='0') and (Gu_tijera='0') and (Gu_Dinamita='1') and (GM_piedra='0') and (GM_papel='0') and (GM_tijera='0') and (GM_Dinamita='0') and (Empate='0')) then y<=Tt;
+					   ELSIF ((Gu_piedra='0') and (Gu_papel='0') and (Gu_tijera='0') and (Gu_Dinamita='0') and (GM_piedra='1') and (GM_papel='0') and (GM_tijera='0') and (GM_Dinamita='0') and (Empate='0')) then y<=Tu;
+					   ELSIF ((Gu_piedra='0') and (Gu_papel='0') and (Gu_tijera='0') and (Gu_Dinamita='0') and (GM_piedra='0') and (GM_papel='1') and (GM_tijera='0') and (GM_Dinamita='0') and (Empate='0')) then y<=Tv;
+						ELSIF ((Gu_piedra='0') and (Gu_papel='0') and (Gu_tijera='0') and (Gu_Dinamita='0') and (GM_piedra='0') and (GM_papel='0') and (GM_tijera='1') and (GM_Dinamita='0') and (Empate='0')) then y<=Tw;
+						ELSIF ((Gu_piedra='0') and (Gu_papel='0') and (Gu_tijera='0') and (Gu_Dinamita='0') and (GM_piedra='0') and (GM_papel='0') and (GM_tijera='0') and (GM_Dinamita='1') and (Empate='0')) then y<=Tx;
+						ELSIF ((Gu_piedra='0') and (Gu_papel='0') and (Gu_tijera='0') and (Gu_Dinamita='0') and (GM_piedra='0') and (GM_papel='0') and (GM_tijera='0') and (GM_Dinamita='0') and (Empate='1')) then y<=Ty;
+						else y<=te;
+						end if;
+			when Tq=> if (Tiempo='1') then y<=Tz; 
+						 else y<=Tq;
+						 end if;
+			when Tr=> if (Tiempo='1') then y<=Tz; 
+						 else y<=Tr;
+						 end if;
+			when Ts=> if (Tiempo='1') then y<=Tz; 
+						 else y<=Ts;
+						 end if;
+			when Tt=> if (Tiempo='1') then y<=Tz; 
+						 else y<=Tt;
+						 end if;
+			when Tu=> if (Tiempo='1') then y<=Ta1; 
+						 else y<=Tu;
+						 end if;
+			when Tv=> if (Tiempo='1') then y<=Ta1; 
+						 else y<=Tv;
+						 end if;
+			when Tw=> if (Tiempo='1') then y<=Ta1; 
+						 else y<=Tw;
+						 end if;
+			when Tx=> if (Tiempo='1') then y<=Ta1; 
+						 else y<=Tx;
+						 end if;
+			when Ty=> if (Tiempo='1') then y<=Te; 
+						 else y<=Ty;
+						 end if;
+			when Tz=> if (mayorigual99='1') then y<=Tb1; 
+						 else y<=Te;
+						 end if;
+			when Ta1=> y<=Tb1 ;
+			when Tb1=> if (Tiempo='1') then y<=Te; 
+						 else y<=Tb1;
+						 end if;
+			when Tc1=> 
+			when Td1=> 
+			when Te1=> 
+			when Tf1=> 
+			when Tg1=> 
+			when Th1=> 
+			when Ti1=> 
+			when Tj1=> 
+			when Tk1=> 
+			when Tl1=> 
+			when Tm1=> 
+			when Tn1=> 
+			when Tp1=> 
+			when Tq1=> 
+			when Tr1=> 
+			when Ts1=> 
+			when Tt1=>  
+			when Tu1=> 
+			when Tv1=> 
+			when Tw1=> 
+			when Tx1=>   
+			when Ty1=> 
+			when Tz1=> 
+
+		end case;
+end if;
+ END PROCESS;
+PROCESS (y)
+begin
+		
+         EN_ram_Usu <= '0';
+			ENA <= '0';
+			En_ram_Aleatorio <= '0';
+			SeleccionU <= "000";
+			EN_Comparacion <= '0';
+			T <= '0';
+			Sel1 <= "000";
+			Sel2 <= "000";
+			
+			EN_conteo <= '0';
+			En_acierto <= '0';
+			EN_AP <= '0';
+			EN_APA <= '0';
+			EN_AT <= '0';
+			EN_AD <= '0';
+			
+			
+			
+		
+		
+		case y is
+			when Ta=> En_ram_Aleatorio <= '0'; EN_ram_Usu <= '0'; Sel1 <= "000"; Sel2 <= "000";
+			when Tb=> 
+			when Tc=> 
+			when Td=> 
+			when Te=> En_ram_Aleatorio <= '0'; EN_ram_Usu <= '0'; Sel1 <= "000"; Sel2 <= "000"; T <= '0';
+			when Tf=>  
+			when Tg=> 
+			when Th=> 
+			when Ti=> 
+			when Tj=> EN_ram_Usu <= '1';En_ram_Aleatorio <= '1'; SeleccionU <= "000";
+			when Tk=> EN_ram_Usu <= '1';En_ram_Aleatorio <= '1'; SeleccionU <= "001"; 
+			when Tl=> EN_ram_Usu <= '1';En_ram_Aleatorio <= '1'; SeleccionU <= "010";
+			when Tm=> EN_ram_Usu <= '1';En_ram_Aleatorio <= '1'; SeleccionU <= "011";
+			when Tn=> Sel1 <= "000"; Sel2 <= "000";
+			when Tp=> EN_Comparacion <= '1';
+			when Tq=> En_ram_Aleatorio <= '0'; Sel1 <= "000"; Sel2 <= "010"; T <= '1'; EN_AP <= '1';
+			when Tr=> En_ram_Aleatorio <= '0'; Sel1 <= "000"; Sel2 <= "011"; T <= '1'; EN_APA <= '1';
+			when Ts=> En_ram_Aleatorio <= '0'; Sel1 <= "000"; Sel2 <= "100"; T <= '1'; EN_AT <= '1';
+			when Tt=> En_ram_Aleatorio <= '0'; Sel1 <= "000"; Sel2 <= "101"; T <= '1'; EN_AD <= '1';
+			when Tu=> EN_ram_Usu <= '0'; Sel1 <= "010"; Sel2 <= "000"; T <= '1'; EN_AP <= '1';
+			when Tv=> EN_ram_Usu <= '0'; Sel1 <= "011"; Sel2 <= "000"; T <= '1'; EN_APA <= '1';
+			when Tw=> EN_ram_Usu <= '0'; Sel1 <= "100"; Sel2 <= "000"; T <= '1'; EN_AT <= '1';
+			when Tx=> EN_ram_Usu <= '0'; Sel1 <= "101"; Sel2 <= "000"; T <= '1'; EN_AD <= '1';
+			when Ty=> En_ram_Aleatorio <= '0'; EN_ram_Usu <= '0'; Sel1 <= "000"; Sel2 <= "000"; T<= '1';
+			when Tz=> T <= '0'; EN_conteo <= '1';
+			when Ta1=> T <= '0'; 
+			when Tb1=> En_acierto <= '1'; T <= '1'; Sel1 <= "001"; Sel2 <= "001";  
+			when Tc1=> 
+			when Td1=> 
+			when Te1=> 
+			when Tf1=> 
+			when Tg1=> 
+			when Th1=> 
+			when Ti1=>  
+			when Tj1=> 
+			when Tk1=> 
+			when Tl1=> 
+			when Tm1=> 
+			when Tn1=> 
+			when Tp1=> 
+			when Tq1=> 
+			when Tr1=> 
+			when Ts1=> 
+			when Tt1=> 
+			when Tu1=> 
+			when Tv1=> 
+			when Tw1=> 				
+			when Tx1=> 
+			when Ty1=> 
+			when Tz1=> 
+
+		end case;
+ END PROCESS;
+END COMPORTAMIENTO;
+
+
+	
+	
+	
+	
+	
