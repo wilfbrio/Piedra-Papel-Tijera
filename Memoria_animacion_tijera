@@ -1,0 +1,104 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+
+entity memoria_animacion_tijera is
+    Port ( Selector_letra: in STD_LOGIC_VECTOR (2 downto 0);
+		   Lectura: in std_logic;
+         Datos1 : out  STD_LOGIC_VECTOR (15 downto 0);
+		   Datos2 : out  STD_LOGIC_VECTOR (15 downto 0);
+		   Datos3 : out  STD_LOGIC_VECTOR (15 downto 0);
+		   Datos4 : out  STD_LOGIC_VECTOR (15 downto 0);
+		   Datos5 : out  STD_LOGIC_VECTOR (15 downto 0);
+		   Datos6 : out  STD_LOGIC_VECTOR (15 downto 0);
+		   Datos7 : out  STD_LOGIC_VECTOR (15 downto 0);
+		   Datos8 : out  STD_LOGIC_VECTOR (15 downto 0));
+end memoria_animacion_tijera;
+
+
+architecture Behavioral of memoria_animacion_tijera is
+begin
+
+process (Selector_letra)
+begin
+if Lectura='1' then
+if Selector_letra = "000"  theN
+
+
+Datos1 <="0111111100000000"; --c1 
+Datos2 <="1011111100000010"; --c2 
+Datos3 <="1101111100100100"; --c3  
+Datos4 <="1110111101111000"; --c4 
+Datos5 <="1111011100100100"; --c5 
+Datos6 <="1111101100000010"; --c6 
+Datos7 <="1111110100000000"; --c7
+Datos8 <="1111111000000000"; --c8  
+ 
+
+
+elsif Selector_letra = "001"  then
+
+
+Datos1 <="0111111100000000"; --c1 
+Datos2 <="1011111100000000"; --c2 
+Datos3 <="1101111100101111"; --c3  
+Datos4 <="1110111101111111"; --c4 
+Datos5 <="1111011100101111"; --c5 
+Datos6 <="1111101100000000"; --c6 
+Datos7 <="1111110100000000"; --c7
+Datos8 <="1111111000000000"; --c8  
+
+elsif Selector_letra = "010"  then
+
+Datos1 <="0111111100000000"; --c1 
+Datos2 <="1011111100000010"; --c2 
+Datos3 <="1101111100100100"; --c3  
+Datos4 <="1110111101111000"; --c4 
+Datos5 <="1111011100100100"; --c5 
+Datos6 <="1111101100000010"; --c6 
+Datos7 <="1111110100000000"; --c7
+Datos8 <="1111111000000000"; --c8  
+  
+elsif Selector_letra = "011"  then
+
+Datos1 <="0111111100000000"; --c1 
+Datos2 <="1011111100000000"; --c2 
+Datos3 <="1101111100101111"; --c3  
+Datos4 <="1110111101111111"; --c4 
+Datos5 <="1111011100101111"; --c5 
+Datos6 <="1111101100000000"; --c6 
+Datos7 <="1111110100000000"; --c7
+Datos8 <="1111111000000000"; --c8  
+
+  
+else
+Datos1 <="0000000000000000"; --c1 
+Datos2 <="0000000000000000"; --c2 
+Datos3 <="0000000000000000"; --c3  
+Datos4 <="0000000000000000"; --c4 
+Datos5 <="0000000000000000"; --c5 
+Datos6 <="0000000000000000"; --c6 
+Datos7 <="0000000000000000"; --c7
+Datos8 <="0000000000000000"; --c8  
+
+
+End if;
+
+else
+Datos1 <="0000000000000000"; --c1 
+Datos2 <="0000000000000000"; --c2 
+Datos3 <="0000000000000000"; --c3  
+Datos4 <="0000000000000000"; --c4 
+Datos5 <="0000000000000000"; --c5 
+Datos6 <="0000000000000000"; --c6 
+Datos7 <="0000000000000000"; --c7
+Datos8 <="0000000000000000"; --c8  
+
+end if;
+
+end process ;
+
+
+end Behavioral;
