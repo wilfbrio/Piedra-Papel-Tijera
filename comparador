@@ -1,0 +1,38 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity mux8a1_15bits is
+
+port (
+     a : in std_logic_vector(15 downto 0);
+	  b : in std_logic_vector(15 downto 0);
+	  c : in std_logic_vector(15 downto 0);
+	  d : in std_logic_vector(15 downto 0);
+	  e : in std_logic_vector(15 downto 0);
+	  f : in std_logic_vector(15 downto 0);
+	  g : in std_logic_vector(15 downto 0);
+	  h : in std_logic_vector(15 downto 0);
+     seleccion : in std_logic_vector(2 downto 0);
+     salida : out std_logic_vector(15 downto 0)
+     );
+end mux8a1_15bits;
+
+architecture sol of mux8a1_15bits is
+begin
+
+process(a,b,c,d,seleccion)
+begin
+case seleccion is
+  when "000" => salida <= a;
+  when "001" => salida <= b;
+  when "010" => salida <= c;
+  when "011" => salida <= d;
+  when "100" => salida <= e;
+  when "101" => salida <= f;
+  when "110" => salida <= g;
+  when "111" => salida <= h;
+  
+  when others => salida <= "0000000000000000"; 
+end case; 
+end process;
+end sol;
